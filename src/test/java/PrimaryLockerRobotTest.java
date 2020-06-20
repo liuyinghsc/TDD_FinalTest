@@ -20,4 +20,11 @@ public class PrimaryLockerRobotTest {
         Bag returnedBag = primaryLockerRobot.pickUp(ticket);
         assertEquals(bag, returnedBag);
     }
+
+    @Test(expected = LockerHasNoRoomException.class)
+    public void should_throw_exception_when_save_bag_given_two_lockers_has_no_room() {
+        PrimaryLockerRobot primaryLockerRobot = new PrimaryLockerRobot(new Locker(0), new Locker(0));
+
+        primaryLockerRobot.save(new Bag());
+    }
 }

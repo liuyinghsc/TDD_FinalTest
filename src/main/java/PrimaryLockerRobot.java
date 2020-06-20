@@ -22,7 +22,7 @@ public class PrimaryLockerRobot {
                 return locker.save(bag);
             }
         }
-        return null;
+        throw new LockerHasNoRoomException();
     }
 
     public Bag pickUp(Ticket ticket) {
