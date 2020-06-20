@@ -27,4 +27,16 @@ public class PrimaryLockerRobotTest {
 
         primaryLockerRobot.save(new Bag());
     }
+
+    @Test
+    public void should_save_to_second_locker_when_save_bag_given_the_first_locker_is_full_and_the_second_has_room() {
+        Locker secondLocker = new Locker(1);
+        PrimaryLockerRobot primaryLockerRobot = new PrimaryLockerRobot(new Locker(0), secondLocker);
+
+        Bag bag = new Bag();
+        Ticket ticket = primaryLockerRobot.save(bag);
+
+        Bag returnedBag = secondLocker.pickUp(ticket);
+        assertEquals(bag, returnedBag);
+    }
 }
