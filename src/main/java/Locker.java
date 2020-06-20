@@ -31,9 +31,10 @@ public class Locker {
     }
 
     public boolean isValid(Ticket ticket) {
-        if (ticketBagMap.containsKey(ticket)) {
-            return true;
-        }
-        return false;
+        return ticketBagMap.containsKey(ticket);
+    }
+
+    public int getAvailableRoom() {
+        return size - ticketBagMap.size();
     }
 }
