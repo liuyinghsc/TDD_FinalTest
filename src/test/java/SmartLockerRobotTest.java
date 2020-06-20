@@ -20,4 +20,17 @@ public class SmartLockerRobotTest {
 
         assertEquals(bag, returnedBag);
     }
+    
+    @Test
+    public void should_save_to_locker_2_when_save_bag_given_locker_2_and_locker_3_have_the_largest_available_room() {
+        Locker secondLocker = new Locker(3);
+        SmartLockerRobot smartLockerRobot = new SmartLockerRobot(new Locker(1), secondLocker, new Locker(3));
+
+        Bag bag = new Bag();
+        Ticket ticket = smartLockerRobot.save(bag);
+
+        Bag returnedBag = secondLocker.pickUp(ticket);
+
+        assertEquals(bag, returnedBag);
+    }
 }
