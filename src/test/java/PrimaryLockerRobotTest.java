@@ -39,4 +39,16 @@ public class PrimaryLockerRobotTest {
         Bag returnedBag = secondLocker.pickUp(ticket);
         assertEquals(bag, returnedBag);
     }
+
+    @Test
+    public void should_return_the_same_bag_when_pick_up_bag_given_valid_ticket() {
+        Locker secondLocker = new Locker(1);
+        PrimaryLockerRobot primaryLockerRobot = new PrimaryLockerRobot(new Locker(0), secondLocker);
+
+        Bag bag = new Bag();
+        Ticket ticket = secondLocker.save(bag);
+
+        Bag returnedBag = primaryLockerRobot.pickUp(ticket);
+        assertEquals(bag, returnedBag);
+    }
 }
