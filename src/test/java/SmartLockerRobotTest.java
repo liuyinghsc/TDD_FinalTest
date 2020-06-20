@@ -33,4 +33,11 @@ public class SmartLockerRobotTest {
 
         assertEquals(bag, returnedBag);
     }
+    
+    @Test(expected = LockerHasNoRoomException.class)
+    public void should_throw_exception_when_save_bag_given_all_lockers_are_full() {
+        SmartLockerRobot smartLockerRobot = new SmartLockerRobot(new Locker(0), new Locker(0), new Locker(0));
+
+        smartLockerRobot.save(new Bag());
+    }
 }
