@@ -22,4 +22,13 @@ public class SmartLockerRobot {
                 .map(value -> value.save(bag))
                 .orElse(null);
     }
+
+    public Bag pickUp(Ticket ticket) {
+        for (Locker locker : lockers) {
+            if (locker.isValid(ticket)) {
+                return locker.pickUp(ticket);
+            }
+        }
+        throw new InvalidTicketException();
+    }
 }
