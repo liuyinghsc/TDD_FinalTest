@@ -7,7 +7,7 @@ import java.util.List;
  * @date 2020/6/20
  */
 
-public class PrimaryLockerRobot {
+public class PrimaryLockerRobot implements Robot{
 
     private final List<Locker> lockers;
 

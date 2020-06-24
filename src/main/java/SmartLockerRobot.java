@@ -8,7 +8,7 @@ import java.util.List;
  * @date 2020/6/20
  */
 
-public class SmartLockerRobot {
+public class SmartLockerRobot implements Robot {
     private final List<Locker> lockers;
 
     public SmartLockerRobot(Locker... lockers) {

@@ -3,10 +3,10 @@ import java.util.Map;
 
 public class Locker {
     private final Map<Ticket, Bag> ticketBagMap;
-    private int size;
+    private int totalCapacity;
 
     public Locker(int size) {
-        this.size = size;
+        this.totalCapacity = size;
         ticketBagMap = new HashMap<>();
     }
 
@@ -20,7 +20,7 @@ public class Locker {
     }
 
     public boolean hasRoom() {
-        return ticketBagMap.size() < size;
+        return ticketBagMap.size() < totalCapacity;
     }
 
     public Bag pickUp(Ticket ticket) {
@@ -35,6 +35,6 @@ public class Locker {
     }
 
     public int getAvailableRoom() {
-        return size - ticketBagMap.size();
+        return totalCapacity - ticketBagMap.size();
     }
 }
