@@ -32,4 +32,17 @@ public class LockerRobotManagerTest {
         final Bag returnedBag = firstLocker.pickUp(ticket);
         assertEquals(returnedBag, bag);
     }
+
+    @Test
+    public void should_save_bag_to_robot_1_when_save_bag_given_manage_two_robots_and_no_locker() {
+        final PrimaryLockerRobot firstRobot = new PrimaryLockerRobot(new Locker(1), new Locker(2));
+        final SmartLockerRobot secondRobot = new SmartLockerRobot(new Locker(1), new Locker(2));
+        final LockerRobotManager lockerRobotManager = new LockerRobotManager(List.of(), List.of(firstRobot, secondRobot));
+
+        final Bag bag = new Bag();
+        final Ticket ticket = lockerRobotManager.save(bag);
+
+        final Bag returnedBag = firstRobot.pickUp(ticket);
+        assertEquals(returnedBag, bag);
+    }
 }
