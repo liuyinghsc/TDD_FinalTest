@@ -141,7 +141,7 @@ Task1:
 - When: LockerRobotManager 存包
 - Then: 包被存入到 Locker1 中，返回票据
 
-Task2:
+Task2(deleted):
 - Given: LockerRobotManager 管理2个容量为1的 Locker，Locker1 已满，没有 Robot
 - When: LockerRobotManager 存包
 - Then: 包被存入到 Locker2 中，返回票据
@@ -151,7 +151,7 @@ Task3:
 - When: LockerRobotManager 存包
 - Then: 包被存入到 Locker1 中，返回票据
 
-Task4:
+Task4(deleted):
 - Given: LockerRobotManager 管理2个容量为1的 Locker，Locker1 已满，2个已满的 Robot
 - When: LockerRobotManager 存包
 - Then: 包被存入到 Locker2 中，返回票据

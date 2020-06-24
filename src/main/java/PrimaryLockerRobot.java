@@ -1,19 +1,18 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
 
 /**
  * @author lianghongbuaa@gmail.com
  * @date 2020/6/20
  */
 
-public class PrimaryLockerRobot implements Robot{
+public class PrimaryLockerRobot extends Robot{
 
-    private final List<Locker> lockers;
+
 
     public PrimaryLockerRobot(Locker... lockers) {
-        this.lockers= new ArrayList<>();
-        Collections.addAll(this.lockers, lockers);
+        super(Arrays.asList(lockers));
     }
 
     public Ticket save(Bag bag) {

@@ -8,12 +8,10 @@ import java.util.List;
  * @date 2020/6/20
  */
 
-public class SmartLockerRobot implements Robot {
-    private final List<Locker> lockers;
+public class SmartLockerRobot extends Robot {
 
     public SmartLockerRobot(Locker... lockers) {
-        this.lockers = new ArrayList<>();
-        this.lockers.addAll(Arrays.asList(lockers));
+        super(Arrays.asList(lockers));
     }
 
     public Ticket save(Bag bag) {
