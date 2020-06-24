@@ -24,6 +24,6 @@ public class LockerRobotManager {
                 return locker.save(bag);
             }
         }
-        return null;
+        throw new LockerHasNoRoomException();
     }
 }

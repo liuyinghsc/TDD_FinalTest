@@ -61,4 +61,15 @@ public class LockerRobotManagerTest {
         final Bag returnedBag = firstRobot.pickUp(ticket);
         assertEquals(returnedBag, bag);
     }
+
+    @Test(expected = LockerHasNoRoomException.class)
+    public void should_failed_when_save_bag_given_manage_two_full_lockers_and_two_full_robots() {
+        final LockerRobotManager lockerRobotManager = new LockerRobotManager(List.of(new Locker(0), new Locker(0)),
+                List.of(
+                        new PrimaryLockerRobot(new Locker(0), new Locker(0)),
+                        new SmartLockerRobot(new Locker(0), new Locker(0))
+                ));
+
+        lockerRobotManager.save(new Bag());
+    }
 }
