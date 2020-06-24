@@ -21,4 +21,13 @@ public abstract class Robot {
         }
         return false;
     }
+
+    boolean isValid(Ticket ticket) {
+        for (Locker locker : lockers) {
+            if(locker.isValid(ticket)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

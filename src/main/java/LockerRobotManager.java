@@ -26,4 +26,18 @@ public class LockerRobotManager {
         }
         throw new LockerHasNoRoomException();
     }
+
+    public Bag pickUp(Ticket ticket) {
+        for (Robot robot: this.robots) {
+            if (robot.isValid(ticket)) {
+                return robot.pickUp(ticket);
+            }
+        }
+        for (Locker locker : this.lockers) {
+            if (locker.isValid(ticket)) {
+                return locker.pickUp(ticket);
+            }
+        }
+        return null;
+    }
 }

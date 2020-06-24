@@ -72,4 +72,19 @@ public class LockerRobotManagerTest {
 
         lockerRobotManager.save(new Bag());
     }
+
+    @Test
+    public void should_pick_up_the_bag_when_pick_up_bag_given_manager_returned_ticket() {
+        final LockerRobotManager lockerRobotManager = new LockerRobotManager(List.of(new Locker(2), new Locker(0)),
+                List.of(
+                        new PrimaryLockerRobot(new Locker(0), new Locker(0)),
+                        new SmartLockerRobot(new Locker(1), new Locker(0))
+                ));
+
+        final Bag bag = new Bag();
+        final Ticket ticket = lockerRobotManager.save(bag);
+
+        Bag returnedBag = lockerRobotManager.pickUp(ticket);
+        assertEquals(bag, returnedBag);
+    }
 }
