@@ -124,3 +124,64 @@ Task7:
 - Given: 存包票据无效
 - When: SmartLockerRobot取包
 - Then: 提示票据无效
+
+## Section 4
+
+### Requirement
+
+- As a `LockerRobotManager`
+- `LockerRobotManager` can save a Bag to the `Locker`
+- `LockerRobotManager` can delegate the save action to the `Robot`s managed by the `LockerRobotManager`.
+- `LockerRobotManager` can retrieve the bag saved by the `LockerRobotManager` 
+
+### Tasking
+
+Task1:
+- Given: LockerRobotManager 管理2个容量为1的 Locker，没有 Robot
+- When: LockerRobotManager 存包
+- Then: 包被存入到 Locker1 中，返回票据
+
+Task2:
+- Given: LockerRobotManager 管理2个容量为1的 Locker，Locker1 已满，没有 Robot
+- When: LockerRobotManager 存包
+- Then: 包被存入到 Locker2 中，返回票据
+
+Task3:
+- Given: LockerRobotManager 管理2个容量为1的 Locker，2个已满的 Robot
+- When: LockerRobotManager 存包
+- Then: 包被存入到 Locker1 中，返回票据
+
+Task4:
+- Given: LockerRobotManager 管理2个容量为1的 Locker，Locker1 已满，2个已满的 Robot
+- When: LockerRobotManager 存包
+- Then: 包被存入到 Locker2 中，返回票据
+
+Task5:
+- Given: LockerRobotManager 管理2个有容量的 Robot，没有 Locker
+- When: LockerRobotManager 存包
+- Then: 包被存入到 Robot1 中，返回票据
+
+Task6:
+- Given: LockerRobotManager 管理2个有容量的 Robot，Robot1 已满，没有 Locker
+- When: LockerRobotManager 存包
+- Then: 包被存入到 Robot2 中，返回票据
+
+Task7:
+- Given: LockerRobotManager 管理2个有容量的 Robot 和2个 Locker
+- When: LockerRobotManager 存包
+- Then: 包被存入到 Robot1 中，返回票据
+
+Task8:
+- Given: LockerRobotManager 管理2个已满的 Robot 和 2个已满的 Locker
+- When: LockerRobotManager 存包
+- Then: 提示存包失败
+
+Task9:
+- Given: LockerRobotManager 存包成功获得的票据
+- When: 取包
+- Then: 取包成功
+
+Task10:
+- Given: 使用非 LockerRobotManager 存包获得的票据
+- When: 取包
+- Then: 提示非法票据
