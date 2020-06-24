@@ -38,6 +38,6 @@ public class LockerRobotManager {
                 return locker.pickUp(ticket);
             }
         }
-        return null;
+        throw new InvalidTicketException();
     }
 }
