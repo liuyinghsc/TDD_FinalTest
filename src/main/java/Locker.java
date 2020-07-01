@@ -1,8 +1,9 @@
 import java.util.HashMap;
 import java.util.Map;
 
-public class Locker {
+public class Locker implements Reportable{
     private final Map<Ticket, Bag> ticketBagMap;
+
     private int totalCapacity;
 
     public Locker(int size) {
@@ -34,7 +35,16 @@ public class Locker {
         return ticketBagMap.containsKey(ticket);
     }
 
+    public int getTotalCapacity() {
+        return totalCapacity;
+    }
+
     public int getAvailableRoom() {
         return totalCapacity - ticketBagMap.size();
+    }
+
+    @Override
+    public String getReport() {
+        return "L " + getAvailableRoom() + " " + totalCapacity;
     }
 }
