@@ -58,6 +58,36 @@ public class LockerRobotDirectorTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void should_return_report_when_view_report_given_director_manage_1_manager_with_2_lockers_and_2_robot_with_2_lockers() {
+        final Locker firstLocker = createLocker(5, 2);
+        final Locker secondLocker = createLocker(5, 2);
+        final PrimaryLockerRobot primaryLockerRobot = new PrimaryLockerRobot(
+                createLocker(5, 3),
+                createLocker(8, 5));
+        final SmartLockerRobot smartLockerRobot = new SmartLockerRobot(
+                createLocker(4, 2),
+                createLocker(7, 6));
+
+        final LockerRobotManager lockerRobotManager = new LockerRobotManager(
+                List.of(firstLocker, secondLocker),
+                List.of(primaryLockerRobot, smartLockerRobot));
+
+        final LockerRobotDirector lockerRobotDirector = new LockerRobotDirector(List.of(lockerRobotManager));
+
+        final String actual = lockerRobotDirector.viewReport();
+        String expected = "M 20 34\n" +
+                "  L 2 5\n" +
+                "  L 2 5\n" +
+                "  R 8 13\n" +
+                "    L 3 5\n" +
+                "    L 5 8\n" +
+                "  R 8 11\n" +
+                "    L 2 4\n" +
+                "    L 6 7";
+        assertEquals(expected, actual);
+    }
+
     private Locker createLocker(int totalCapacity, int availableCapacity) {
         final Locker locker = new Locker(totalCapacity);
         int bagsCount = totalCapacity - availableCapacity;
