@@ -39,12 +39,12 @@ public class Locker implements Reportable{
         return totalCapacity;
     }
 
-    public int getAvailableRoom() {
+    public int getAvailableCapacity() {
         return totalCapacity - ticketBagMap.size();
     }
 
     @Override
     public String getReport() {
-        return "L " + getAvailableRoom() + " " + totalCapacity;
+        return "L " + getAvailableCapacity() + " " + totalCapacity;
     }
 }

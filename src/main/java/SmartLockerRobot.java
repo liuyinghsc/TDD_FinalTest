@@ -1,7 +1,5 @@
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.List;
 
 /**
  * @author lianghongbuaa@gmail.com
@@ -16,7 +14,7 @@ public class SmartLockerRobot extends Robot {
 
     public Ticket save(Bag bag) {
         return lockers.stream()
-                .max(Comparator.comparing(Locker::getAvailableRoom))
+                .max(Comparator.comparing(Locker::getAvailableCapacity))
                 .map(value -> value.save(bag))
                 .orElse(null);
     }

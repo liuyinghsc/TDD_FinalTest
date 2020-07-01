@@ -1,8 +1,9 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class LockerRobotManager implements Reportable{
+public class LockerRobotManager implements Reportable {
     private final List<Locker> lockers = new ArrayList<>();
     private final List<Robot> robots = new ArrayList<>();
 
@@ -12,7 +13,7 @@ public class LockerRobotManager implements Reportable{
     }
 
     public Ticket save(Bag bag) {
-        for (Robot robot: this.robots) {
+        for (Robot robot : this.robots) {
             if (robot.hasRoom()) {
                 return robot.save(bag);
             }
@@ -27,7 +28,7 @@ public class LockerRobotManager implements Reportable{
     }
 
     public Bag pickUp(Ticket ticket) {
-        for (Robot robot: this.robots) {
+        for (Robot robot : this.robots) {
             if (robot.isValid(ticket)) {
                 return robot.pickUp(ticket);
             }
@@ -41,20 +42,20 @@ public class LockerRobotManager implements Reportable{
     }
 
     public int getAvailableCapacity() {
-        return lockers.stream()
-                .mapToInt(Locker::getAvailableRoom)
-                .sum();
+        return lockers.stream().mapToInt(Locker::getAvailableCapacity).sum() +
+                robots.stream().mapToInt(Robot::getAvailableCapacity).sum();
     }
 
     public int getTotalCapacity() {
-        return lockers.stream()
-                .mapToInt(Locker::getTotalCapacity)
-                .sum();
+        return lockers.stream().mapToInt(Locker::getTotalCapacity).sum() +
+                robots.stream().mapToInt(Robot::getTotalCapacity).sum();
     }
 
     @Override
     public String getReport() {
-        return String.join("\n", getSumReport(), getLockerReport());
+        return Stream.of(getSumReport(), getLockerReport(), getRobotReport())
+                .filter(string -> !string.isEmpty())
+                .collect(Collectors.joining("\n"));
     }
 
     private String getSumReport() {
@@ -64,6 +65,12 @@ public class LockerRobotManager implements Reportable{
     private String getLockerReport() {
         return lockers.stream()
                 .map(locker -> "  " + locker.getReport())
+                .collect(Collectors.joining("\n"));
+    }
+
+    private String getRobotReport() {
+        return robots.stream()
+                .map(Robot::getReport)
                 .collect(Collectors.joining("\n"));
     }
 }
