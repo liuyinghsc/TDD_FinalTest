@@ -264,3 +264,13 @@ Task5:
         R 8 19
             L 2 11
             L 6 8
+            
+Task6:
+- Given: LockerRobotDirector 管理一个 LockerRobotManager, LockerRobotManager 管理一个 Robot, 
+    Robot 管理两个 Locker，一个总容量为5，可用容量为3，一个总容量为8，可用容量为5
+- When: LockerRobotDirector 查看报表
+- Then: 返回报表  
+    M 12 23
+        R 8 13
+            L 3 5
+            L 5 8
