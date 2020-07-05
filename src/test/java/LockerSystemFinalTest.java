@@ -2,6 +2,7 @@ import com.sun.tools.javac.util.List;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 
 public class LockerSystemFinalTest {
@@ -313,7 +314,7 @@ public class LockerSystemFinalTest {
     }
 
     @Test
-    public void should_pickup_bag_when_vip_user_pickup_bag_given_lockerRobotManager_manag_eone_locker_and_one_priRobot_and_one_superRobot() {
+    public void should_success_pickup_bag_when_vip_user_pickup_bag_given_valid_ticket_lockerRobotManager_manage_one_locker_and_one_priRobot_and_one_superRobot() {
         Locker vipsLocker = new Locker(5, "S");
         Locker vipmLocker1 = new Locker(5, "M");
         PrimaryLockerRobot priRobot = new PrimaryLockerRobot(vipmLocker1);
@@ -326,6 +327,24 @@ public class LockerSystemFinalTest {
 
         Bag pickupBag = vipLockerRobotManager.pickup(ticket);
         assertEquals(pickupBag, sbag);
+    }
+
+    @Test(expected = InvalidTicketException.class)
+    public void should_failed_pickup_bag_when_vip_user_pickup_bag_given_invalid_tiket_lockerRobotManager_manage_one_locker_and_one_priRobot_and_one_superRobot() {
+        Locker sLocker = new Locker(5, "S");
+
+        Locker vipsLocker = new Locker(5, "S");
+        Locker vipmLocker1 = new Locker(5, "M");
+        PrimaryLockerRobot priRobot = new PrimaryLockerRobot(vipmLocker1);
+        Locker viplLocker1 = new Locker(5, "L");
+        SuperLockerRobot superRobot = new SuperLockerRobot(viplLocker1);
+        VipLockerRobotManager vipLockerRobotManager = new VipLockerRobotManager(List.of(vipsLocker), List.of(priRobot), List.of(superRobot));
+
+        Bag sbag = new Bag("S");
+        Ticket ticket = sLocker.save(sbag);
+
+        vipLockerRobotManager.pickup(ticket);
+
     }
 
 
