@@ -240,7 +240,24 @@ public class LockerSystemFinalTest {
         normalManager.save(bag);
     }
 
+    @Test(expected = LockerHasNoRoomException.class)
+    public void should_save_failed_when_normal_user_save_l_bag_given_supermaket_manage_one_locker_and_one_priRobot_and_one_superBobot_has_no_room(){
 
+        Locker sLocker = new Locker(5, "S");
+        Locker mLocker = new Locker(5, "M");
+        PrimaryLockerRobot priRobot = new PrimaryLockerRobot(mLocker);
+        Locker lLocker = new Locker(5, "L");
+        lLocker.save(new Bag("L"));
+        lLocker.save(new Bag("L"));
+        lLocker.save(new Bag("L"));
+        lLocker.save(new Bag("L"));
+        lLocker.save(new Bag("L"));
+        SuperLockerRobot superRobot = new SuperLockerRobot(lLocker);
+        NormalManager normalManager = new NormalManager(List.of(sLocker), List.of(priRobot), List.of(superRobot));
+
+        Bag bag = new Bag("L");
+        normalManager.save(bag);
+    }
 
 
 
