@@ -22,6 +22,7 @@ public class PrimaryLockerRobot{
                 throw new LockerIsNotMatchException("The Locker is not match the robot");
             }
         }
+        this.lockers= new ArrayList<>();
         this.lockers.addAll(resLockers);
     }
 
