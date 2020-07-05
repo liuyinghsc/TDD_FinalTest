@@ -66,6 +66,21 @@ public class LockerSystemFinalTest {
         assertEquals(pickupBag,mbag);
     }
 
+    @Test
+    public void should_save_bag_to_llocker_when_normal_user_save_l_bag_given_supermaket_manage_one_locker_one_priRobot_and_one_superBobot() {
+        Locker sLocker = new Locker(5, "S");
+        Locker mLocker = new Locker(5, "M");
+        PrimaryLockerRobot priRobot = new PrimaryLockerRobot(mLocker);
+        Locker lLocker = new Locker(5, "L");
+        SuperLockerRobot superRobot = new SuperLockerRobot(lLocker);
+        NormalManager normalManager = new NormalManager(List.of(sLocker), List.of(priRobot), List.of(superRobot));
+
+        Bag mbag = new Bag("L");
+        Ticket ticket = normalManager.save(mbag);
+
+        Bag pickupBag = lLocker.pickUp(ticket);
+        assertEquals(pickupBag,mbag);
+    }
 
 
 
