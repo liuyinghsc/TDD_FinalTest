@@ -143,11 +143,11 @@ public class LockerSystemFinalTest {
         SuperLockerRobot superRobot = new SuperLockerRobot(viplLocker);
         VipLockerRobotManager vipLockerRobotManager = new VipLockerRobotManager(List.of(vipsLocker), List.of(priRobot), List.of(superRobot));
 
-        Bag mbag = new Bag("M");
-        Ticket ticket = vipLockerRobotManager.save(mbag);
+        Bag vipmbag = new Bag("M");
+        Ticket ticket = vipLockerRobotManager.save(vipmbag);
 
         Bag pickupBag = vipmLocker.pickUp(ticket);
-        assertEquals(pickupBag,mbag);
+        assertEquals(pickupBag,vipmbag);
     }
 
     @Test
