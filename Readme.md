@@ -274,3 +274,260 @@ Task6:
         R 8 13
             L 3 5
             L 5 8
+            
+
+## Section FinalTest
+
+### Requirement
+Normal:
+supermarket management XiaoYing manage S Locker and PrimaryRobot and SuperRobot;
+-PrimaryRobot manage M Locker;
+-SuperRobot manage L Locker;
+VIP:
+- As a `LockerRobotManager` 
+-manage S Locker and PrimaryRobot and SuperRobot;
+-PrimaryRobot manage M Locker;
+-SuperRobot manage L Locker;
+
+### Tasking
+
+
+Task1:
+- Given: 
+普通区：一个Locker1(S)有空位，一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker2，有空位，一个SuperLockerRobot(L),SuperLockerRobot管理一个Locker3，有空位
+VIP区：LockerRobotManager 管理一个Locker11（S),一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker22，一个SuperLockerRobot(L)，SuperLockerRobot管理一个Locker33，
+- When: 普通用户存S包
+- Then: 包被存入到 Locker1 中，返回票据
+
+
+Task2:
+- Given: 
+普通区：一个Locker1(S)有空位，一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker2有空位，一个SuperLockerRobot(L),SuperLockerRobot管理一个Locker3，有空位
+VIP区：LockerRobotManager 管理一个Locker11（S),一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker22，一个SuperLockerRobot(L)，SuperLockerRobot管理一个Locker33，
+- When: 普通用户存M包
+- Then: 包被存入到 PrimaryLockerRobot的Locker2 中，返回票据
+
+Task3:
+- Given: 
+普通区：一个Locker1(S)有空位，一个PrimaryLockerRobot(M),PrimaryLockerRobot管理两个Locker2和Locker3，Locker2总量5，余量1，Locker3总量5，余量4，一个SuperLockerRobot(L)，SuperLockerRobot管理一个Locker4有空位，
+VIP区：LockerRobotManager 管理一个Locker11（S),一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker22，一个SuperLockerRobot(L)，SuperLockerRobot管理一个Locker33，
+- When: 普通用户存M包
+- Then: 包被存入到PrimaryLockerRobot的 Locker2 中，返回票据
+
+
+Task4:
+- Given: 
+普通区：一个Locker1(S)有空位，一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker2有空位，一个SuperLockerRobot(L),SuperLockerRobot管理一个Locker3，有空位
+VIP区：LockerRobotManager 管理一个Locker11（S),一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker22，一个SuperLockerRobot(L)，SuperLockerRobot管理一个Locker33，
+- When: 普通用户存L包
+- Then: 包被存入到 SuperLockerRobot的Locker3 中，返回票据
+
+Task5:
+- Given: 
+普通区：一个Locker1(S)有空位，一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker2有空位，一个SuperLockerRobot(L),SuperLockerRobot管理两个Locker3和Locker4，Locker3总量5，余量2，Locker4总量5，余量4
+VIP区：LockerRobotManager 管理一个Locker11（S),一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker22，一个SuperLockerRobot(L)，SuperLockerRobot管理一个Locker33，
+- When: 普通用户存L包
+- Then: 包被存入到SuperLockerRobot的 Locker4 中，返回票据
+
+
+Task6:
+- Given: 
+普通区：一个Locker1(S)有空位，一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker2，有空位，一个SuperLockerRobot(L),SuperLockerRobot管理一个Locker3，有空位
+VIP区：LockerRobotManager 管理一个Locker11（S),一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker22，一个SuperLockerRobot(L)，SuperLockerRobot管理一个Locker33，
+- When: VIP用户存S包
+- Then: LockerRobotManager存包，包被存入到 Locker11 中，返回票据
+
+Task6:
+- Given: 
+普通区：一个Locker1(S)有空位，一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker2，有空位，一个SuperLockerRobot(L),SuperLockerRobot管理一个Locker3，有空位
+VIP区：LockerRobotManager 管理一个Locker11（S)有空位,一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker22有空位，一个SuperLockerRobot(L)，SuperLockerRobot管理一个Locker33有空位，
+- When: VIP用户存M包
+- Then: LockerRobotManager存包，包被存入到 Locker22 中，返回票据
+
+Task6:
+- Given: 
+普通区：一个Locker1(S)有空位，一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker2，有空位，一个SuperLockerRobot(L),SuperLockerRobot管理一个Locker3，有空位
+VIP区：LockerRobotManager 管理一个Locker11（S)有空位,一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker22和Locker33，Locker22总量5，余量1，Locker33总量5，余量4，一个SuperLockerRobot(L)，SuperLockerRobot管理一个Locker44有空位，
+- When: VIP用户存M包
+- Then: LockerRobotManager存包，包被存入到 Locker22 中，返回票据
+
+Task7:
+- Given: 
+普通区：一个Locker1(S)有空位，一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker2，有空位，一个SuperLockerRobot(L),SuperLockerRobot管理一个Locker3，有空位
+VIP区：LockerRobotManager 管理一个Locker11（S)有空位,一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker22有空位，一个SuperLockerRobot(L)，SuperLockerRobot管理一个Locker33有空位，
+- When: VIP用户存L包
+- Then: LockerRobotManager存包，包被存入到 Locker33 中，返回票据
+
+Task8:
+- Given: 
+普通区：一个Locker1(S)有空位，一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker2，有空位，一个SuperLockerRobot(L),SuperLockerRobot管理一个Locker3，有空位
+VIP区：LockerRobotManager 管理一个Locker11（S)有空位,一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker22有空位，一个SuperLockerRobot(L)，SuperLockerRobot管理一个Locker33和Locker44，Locker33总量5，余量1，Locker44总量5，余量4，
+- When: VIP用户存L包
+- Then: LockerRobotManager存包，包被存入到 Locker44 中，返回票据
+
+
+Task9:
+- Given: 
+普通区：一个Locker1(S)满，一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker2，有空位，一个SuperLockerRobot(L),SuperLockerRobot管理一个Locker3，有空位
+- When: 普通用户存S包
+- Then: 存失败
+
+Task10:
+- Given: 
+普通区：一个Locker1(S)有空位，一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker2满，一个SuperLockerRobot(L),SuperLockerRobot管理一个Locker3，有空位
+- When: 普通用户存M包
+- Then: 存失败
+
+Task11:
+- Given: 
+普通区：一个Locker1(S)有空位，一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker2有空位，一个SuperLockerRobot(L),SuperLockerRobot管理一个Locker3满
+- When: 普通用户存L包
+- Then: 存失败
+
+Task12:
+- Given: 
+普通区：一个Locker1(S)有空位，一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker2，有空位，一个SuperLockerRobot(L),SuperLockerRobot管理一个Locker3，有空位
+VIP区：LockerRobotManager 管理一个Locker11（S)满,一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker22有空位，一个SuperLockerRobot(L)，SuperLockerRobot管理一个Locker33有空位
+- When: VIP用户存S包
+- Then: 存Locker1，返回票据
+
+Task13:
+- Given: 
+普通区：一个Locker1(S)有空位，一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker2，有空位，一个SuperLockerRobot(L),SuperLockerRobot管理一个Locker3，有空位
+VIP区：LockerRobotManager 管理一个Locker11（S)有空位,一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker22满，一个SuperLockerRobot(L)，SuperLockerRobot管理一个Locker33有空位
+- When: VIP用户存M包
+- Then: 存Locker2，返回票据
+
+
+Task14:
+- Given: 
+普通区：一个Locker1(S)有空位，一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker2，有空位，一个SuperLockerRobot(L),SuperLockerRobot管理一个Locker3，有空位
+VIP区：LockerRobotManager 管理一个Locker11（S)有空位,一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker22有空位，一个SuperLockerRobot(L)，SuperLockerRobot管理一个Locker33满
+- When: VIP用户存L包
+- Then: 存Locker3，返回票据
+
+
+Task14:
+- Given: 
+普通区：一个Locker1(S)有空位，一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker2，有空位，一个SuperLockerRobot(L),SuperLockerRobot管理一个Locker3，有空位
+VIP区：LockerRobotManager 管理一个Locker11（S)有空位,一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker22有空位，一个SuperLockerRobot(L)，SuperLockerRobot管理一个Locker33满
+- When: VIP用户存L包
+- Then: 存Locker3，返回票据
+
+
+Task15:
+- Given: 
+普通区：一个Locker1(S)满，一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker2满，一个SuperLockerRobot(L),SuperLockerRobot管理一个Locker3满
+- When: 普通用户S包
+- Then: 存失败，返回满信息
+
+Task16:
+- Given: 
+普通区：一个Locker1(S)满，一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker2满，一个SuperLockerRobot(L),SuperLockerRobot管理一个Locker3满
+- When: 普通用户M 包
+- Then: 存失败，返回满信息
+
+Task17:
+- Given: 
+普通区：一个Locker1(S)满，一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker2满，一个SuperLockerRobot(L),SuperLockerRobot管理一个Locker3满
+- When: 普通用户L 包
+- Then: 存失败，返回满信息
+
+
+Task18:
+- Given: 
+普通区：一个Locker1(S)满，一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker2满，一个SuperLockerRobot(L),SuperLockerRobot管理一个Locker3满
+ VIP区：LockerRobotManager 管理一个Locker11（S)满,一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker22满，一个SuperLockerRobot(L)，SuperLockerRobot管理一个Locker33满
+- When: VIP用户存S包
+- Then: 存失败，返回满信息
+
+Task19:
+- Given: 
+普通区：一个Locker1(S)满，一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker2满，一个SuperLockerRobot(L),SuperLockerRobot管理一个Locker3满
+ VIP区：LockerRobotManager 管理一个Locker11（S)满,一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker22满，一个SuperLockerRobot(L)，SuperLockerRobot管理一个Locker33满
+- When: VIP用户存M包
+- Then: 存失败，返回满信息
+
+Task20:
+- Given: 
+普通区：一个Locker1(S)满，一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker2满，一个SuperLockerRobot(L),SuperLockerRobot管理一个Locker3满
+ VIP区：LockerRobotManager 管理一个Locker11（S)满,一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker22满，一个SuperLockerRobot(L)，SuperLockerRobot管理一个Locker33满
+- When: VIP用户存L包
+- Then: 存失败，返回满信息
+
+Task21:
+- Given: 
+普通区：一个Locker1(S)，一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker2，一个SuperLockerRobot(L),SuperLockerRobot管理一个Locker3；
+ VIP区：LockerRobotManager 管理一个Locker11（S),一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker22，一个SuperLockerRobot(L)，SuperLockerRobot管理一个Locker33
+- When: VIP用户取包，VIP区有效票
+- Then: LockerRobotManager取包成功，回收票
+
+Task22:
+- Given: 
+普通区：一个Locker1(S)，一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker2，一个SuperLockerRobot(L),SuperLockerRobot管理一个Locker3；
+ VIP区：LockerRobotManager 管理一个Locker11（S),一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker22，一个SuperLockerRobot(L)，SuperLockerRobot管理一个Locker33
+- When: VIP用户取S包，普通区有效票
+- Then: Locker1取包成功，回收票
+
+Task23:
+- Given: 
+普通区：一个Locker1(S)，一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker2，一个SuperLockerRobot(L),SuperLockerRobot管理一个Locker3；
+ VIP区：LockerRobotManager 管理一个Locker11（S),一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker22，一个SuperLockerRobot(L)，SuperLockerRobot管理一个Locker33
+- When: VIP用户取M包，普通区有效票
+- Then: PrimaryLockerRobot取包成功，回收票
+
+Task24:
+- Given: 
+普通区：一个Locker1(S)，一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker2，一个SuperLockerRobot(L),SuperLockerRobot管理一个Locker3；
+ VIP区：LockerRobotManager 管理一个Locker11（S),一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker22，一个SuperLockerRobot(L)，SuperLockerRobot管理一个Locker33
+- When: VIP用户取L包，普通区有效票
+- Then: SuperLockerRobot取包成功，回收票
+
+Task25:
+- Given: 
+普通区：一个Locker1(S)，一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker2，一个SuperLockerRobot(L),SuperLockerRobot管理一个Locker3；
+ VIP区：LockerRobotManager 管理一个Locker11（S),一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker22，一个SuperLockerRobot(L)，SuperLockerRobot管理一个Locker33
+- When: 普通用户取S包，普通区有效票
+- Then: Locker1取包成功，回收票
+
+Task26:
+- Given: 
+普通区：一个Locker1(S)，一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker2，一个SuperLockerRobot(L),SuperLockerRobot管理一个Locker3；
+ VIP区：LockerRobotManager 管理一个Locker11（S),一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker22，一个SuperLockerRobot(L)，SuperLockerRobot管理一个Locker33
+- When: 普通用户取M包，普通区有效票
+- Then: PrimaryLockerRobot取包成功，回收票
+
+
+Task27:
+- Given: 
+普通区：一个Locker1(S)，一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker2，一个SuperLockerRobot(L),SuperLockerRobot管理一个Locker3；
+ VIP区：LockerRobotManager 管理一个Locker11（S),一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker22，一个SuperLockerRobot(L)，SuperLockerRobot管理一个Locker33
+- When: 普通用户取L包，普通区有效票
+- Then: SuperLockerRobot取包成功，回收票
+
+
+Task28:
+- Given: 
+普通区：一个Locker1(S)，一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker2，一个SuperLockerRobot(L),SuperLockerRobot管理一个Locker3；
+ VIP区：LockerRobotManager 管理一个Locker11（S),一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker22，一个SuperLockerRobot(L)，SuperLockerRobot管理一个Locker33
+- When: 普通用户非法票
+- Then: 取包失败，返回票的型号对不上
+
+Task29:
+- Given: 
+普通区：一个Locker1(S)，一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker2，一个SuperLockerRobot(L),SuperLockerRobot管理一个Locker3；
+ VIP区：LockerRobotManager 管理一个Locker11（S),一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker22，一个SuperLockerRobot(L)，SuperLockerRobot管理一个Locker33
+- When: VIP用户非法票
+- Then: 取包失败，返回票的型号对不上
+
+
+Task30:
+- Given: 超市管理员配置Robot和Manager
+- When: Locker型号不匹配
+- Then: Robot和Manager将无法正常使用
+
+
+Task30:
+- Given: 超市管理员配置Robot和Manager
+- When: Locker型号匹配
+- Then: Robot和Manager正常使用
