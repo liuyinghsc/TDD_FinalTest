@@ -82,6 +82,24 @@ public class LockerSystemFinalTest {
         assertEquals(pickupBag,mbag);
     }
 
+    @Test
+    public void should_save_bag_to_mlocker1_when_normal_user_save_m_bag_given_supermaket_manage_one_priRobot_with_two_locker() {
+        Locker sLocker = new Locker(5, "S");
+        Locker mLocker1 = new Locker(5, "M");
+        mLocker1.save(new Bag("M"));
+        Locker mLocker2 = new Locker(5, "M");
+        PrimaryLockerRobot priRobot = new PrimaryLockerRobot(mLocker1,mLocker2);
+        Locker lLocker = new Locker(5, "L");
+        SuperLockerRobot superRobot = new SuperLockerRobot(lLocker);
+        NormalManager normalManager = new NormalManager(List.of(sLocker), List.of(priRobot), List.of(superRobot));
+
+        Bag mbag = new Bag("M");
+        Ticket ticket = normalManager.save(mbag);
+
+        Bag pickupBag = mLocker1.pickUp(ticket);
+        assertEquals(pickupBag,mbag);
+    }
+
 
 
 
