@@ -33,32 +33,32 @@ public abstract class Robot implements Reportable{
         return false;
     }
 
-//    public int getAvailableCapacity() {
-//        return lockers.stream()
-//                .mapToInt(Locker::getAvailableCapacity)
-//                .sum();
-//    }
-//
-//    public int getTotalCapacity() {
-//        return lockers.stream()
-//                .mapToInt(Locker::getTotalCapacity)
-//                .sum();
-//    }
-//
-//    @Override
-//    public String getReport() {
-//        return Stream.of(getSumReport(), getLockersReport())
-//                .filter(string -> !string.isEmpty())
-//                .collect(Collectors.joining("\n"));
-//    }
+    public int getAvailableCapacity() {
+        return lockers.stream()
+                .mapToInt(Locker::getAvailableCapacity)
+                .sum();
+    }
 
-//    private String getSumReport() {
-//        return "  R " + getAvailableCapacity() +" " + getTotalCapacity();
-//    }
-//
-//    private String getLockersReport() {
-//        return lockers.stream()
-//                .map(locker -> "    " + locker.getReport())
-//                .collect(Collectors.joining("\n"));
-//    }
+    public int getTotalCapacity() {
+        return lockers.stream()
+                .mapToInt(Locker::getTotalCapacity)
+                .sum();
+    }
+
+    @Override
+    public String getReport() {
+        return Stream.of(getSumReport(), getLockersReport())
+                .filter(string -> !string.isEmpty())
+                .collect(Collectors.joining("\n"));
+    }
+
+    private String getSumReport() {
+        return "  R " + getAvailableCapacity() +" " + getTotalCapacity();
+    }
+
+    private String getLockersReport() {
+        return lockers.stream()
+                .map(locker -> "    " + locker.getReport())
+                .collect(Collectors.joining("\n"));
+    }
 }

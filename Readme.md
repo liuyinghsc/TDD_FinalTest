@@ -445,5 +445,12 @@ Task22:
 - Given: 
 普通区：一个Locker1(S)，一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker2，一个SuperLockerRobot(L),SuperLockerRobot管理一个Locker3；
  VIP区：LockerRobotManager 管理一个Locker11（S),一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker22，一个SuperLockerRobot(L)，SuperLockerRobot管理一个Locker33
-- When: 普通用户取包，无效票
+- When: 普通用户取包，无效票(vip区域的票)
+- Then: 取包失败，返回票的型号对不上
+
+Task23:
+- Given: 
+普通区：一个Locker1(S)，一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker2，一个SuperLockerRobot(L),SuperLockerRobot管理一个Locker3；
+ VIP区：LockerRobotManager 管理一个Locker11（S),一个PrimaryLockerRobot(M),PrimaryLockerRobot管理一个Locker22，一个SuperLockerRobot(L)，SuperLockerRobot管理一个Locker33
+- When: 普通用户取包，无效票（普通区域的尺寸type不对应）
 - Then: 取包失败，返回票的型号对不上

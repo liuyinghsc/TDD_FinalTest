@@ -44,6 +44,6 @@ public class NormalManager {
         for (SuperLockerRobot superLockerRobot:superRobots){
             return superLockerRobot.pickUp(ticket);
         }
-        throw new InvalidTicketException();
+        throw new InvalidTicketException("the ticket is not match!");
     }
 }
