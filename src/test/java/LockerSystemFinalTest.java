@@ -2,7 +2,6 @@ import com.sun.tools.javac.util.List;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 
 public class LockerSystemFinalTest {
@@ -344,7 +343,22 @@ public class LockerSystemFinalTest {
         Ticket ticket = sLocker.save(sbag);
 
         vipLockerRobotManager.pickup(ticket);
+    }
 
+    @Test
+    public void should_success_pickup_bag_when_normal_user_pickup_bag_given_valid_ticket_normalManager_manage_one_locker_and_one_priRobot_and_one_superRobot() {
+        Locker sLocker = new Locker(5, "S");
+        Locker mLocker1 = new Locker(5, "M");
+        PrimaryLockerRobot priRobot = new PrimaryLockerRobot(mLocker1);
+        Locker lLocker = new Locker(5, "L");
+        SuperLockerRobot superRobot = new SuperLockerRobot(lLocker);
+        NormalManager normalManager = new NormalManager(List.of(sLocker), List.of(priRobot), List.of(superRobot));
+
+        Bag mBag = new Bag("M");
+        Ticket ticket = normalManager.save(mBag);
+
+        Bag pickupBag = normalManager.pickup(ticket);
+        assertEquals(mBag,pickupBag);
     }
 
 
