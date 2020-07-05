@@ -59,11 +59,11 @@ public class LockerSystemFinalTest {
         SuperLockerRobot superRobot = new SuperLockerRobot(lLocker);
         NormalManager normalManager = new NormalManager(List.of(sLocker), List.of(priRobot), List.of(superRobot));
 
-        Bag bag = new Bag("M");
-        Ticket ticket = normalManager.save(bag);
+        Bag mbag = new Bag("M");
+        Ticket ticket = normalManager.save(mbag);
 
         Bag pickupBag = mLocker.pickUp(ticket);
-        assertEquals(pickupBag,bag);
+        assertEquals(pickupBag,mbag);
     }
 
 
