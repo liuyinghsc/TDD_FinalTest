@@ -4,34 +4,34 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public abstract class Robot implements Reportable{
-//    protected final List<Locker> lockers;
+    protected final List<Locker> lockers;
+
+    protected Robot(List<Locker> lockers) {
+        this.lockers= new ArrayList<>();
+        this.lockers.addAll(lockers);
+    }
 //
-//    protected Robot(List<Locker> lockers) {
-//        this.lockers= new ArrayList<>();
-//        this.lockers.addAll(lockers);
-//    }
+    abstract Ticket save(Bag bag);
 //
-//    abstract Ticket save(Bag bag);
+    abstract Bag pickUp(Ticket ticket);
 //
-//    abstract Bag pickUp(Ticket ticket);
-//
-//    boolean hasRoom() {
-//        for (Locker locker : lockers) {
-//            if(locker.hasRoom()) {
-//                return true;
-//            }
-//        }
-//        return false;
-//    }
-//
-//    boolean isValid(Ticket ticket) {
-//        for (Locker locker : lockers) {
-//            if(locker.isValid(ticket)) {
-//                return true;
-//            }
-//        }
-//        return false;
-//    }
+    boolean hasRoom() {
+        for (Locker locker : lockers) {
+            if(locker.hasRoom()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    boolean isValid(Ticket ticket) {
+        for (Locker locker : lockers) {
+            if(locker.isValid(ticket)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 //    public int getAvailableCapacity() {
 //        return lockers.stream()

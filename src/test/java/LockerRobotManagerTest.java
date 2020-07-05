@@ -15,7 +15,7 @@ public class LockerRobotManagerTest {
 //        final Bag returnedBag = firstLocker.pickUp(ticket);
 //        assertEquals(returnedBag, bag);
 //    }
-//
+////
 //    @Test
 //    public void should_save_bag_to_locker_1_when_save_bag_given_manage_two_lockers_and_two_full_robots() {
 //        final Locker firstLocker = new Locker(1);

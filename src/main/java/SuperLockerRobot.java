@@ -8,10 +8,10 @@ import java.util.List;
  * @date 2020/6/20
  */
 
-public class SmartLockerRobot {
+public class SuperLockerRobot {
     private List<Locker> lockers;
 
-    public SmartLockerRobot(Locker... lockers) {
+    public SuperLockerRobot(Locker... lockers) {
         List<Locker> lockers1 = Arrays.asList(lockers);
         ArrayList<Locker> resLockers = new ArrayList<>();
         for (int i = 0; i < lockers1.size(); i++) {

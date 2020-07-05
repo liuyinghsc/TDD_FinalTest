@@ -12,34 +12,34 @@ public class LockerRobotManager{
         this.robots.addAll(robots);
     }
 
-//    public Ticket save(Bag bag) {
-//        for (Robot robot : this.robots) {
-//            if (robot.hasRoom()) {
-//                return robot.save(bag);
-//            }
-//        }
-//
-//        for (Locker locker : this.lockers) {
-//            if (locker.hasRoom()) {
-//                return locker.save(bag);
-//            }
-//        }
-//        throw new LockerHasNoRoomException();
-//    }
+    public Ticket save(Bag bag) {
+        for (Robot robot : this.robots) {
+            if (robot.hasRoom()) {
+                return robot.save(bag);
+            }
+        }
 
-//    public Bag pickUp(Ticket ticket) {
-//        for (Robot robot : this.robots) {
-//            if (robot.isValid(ticket)) {
-//                return robot.pickUp(ticket);
-//            }
-//        }
-//        for (Locker locker : this.lockers) {
-//            if (locker.isValid(ticket)) {
-//                return locker.pickUp(ticket);
-//            }
-//        }
-//        throw new InvalidTicketException();
-//    }
+        for (Locker locker : this.lockers) {
+            if (locker.hasRoom()) {
+                return locker.save(bag);
+            }
+        }
+        throw new LockerHasNoRoomException();
+    }
+
+    public Bag pickUp(Ticket ticket) {
+        for (Robot robot : this.robots) {
+            if (robot.isValid(ticket)) {
+                return robot.pickUp(ticket);
+            }
+        }
+        for (Locker locker : this.lockers) {
+            if (locker.isValid(ticket)) {
+                return locker.pickUp(ticket);
+            }
+        }
+        throw new InvalidTicketException();
+    }
 //
 //    public int getAvailableCapacity() {
 //        return lockers.stream().mapToInt(Locker::getAvailableCapacity).sum() +

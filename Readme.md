@@ -81,28 +81,28 @@ Task5:
 
 ## Section 3
 
-- As a `SmartLockerRobot`
+- As a `SuperLockerRobot`
 - I can save a Bag to the locker which has the largest remain room. If some lockers have the same room, save the bag to locker by order in these lockers.
 - I can pick Bag using valid ticket.
-- The SmartLockerRobot and the PrimaryLockerRobot can manage a same Locker.
+- The SuperLockerRobot and the PrimaryLockerRobot can manage a same Locker.
 
 ### Tasking
 
-SmartLockerRobot 和 PrimaryLockerRobot共同管理3个储物柜，按顺序为1,2,3
+SuperLockerRobot 和 PrimaryLockerRobot共同管理3个储物柜，按顺序为1,2,3
 
 Task1:
 - Given 3号柜空位最多
-- When SmartLockerRobot 存包
+- When SuperLockerRobot 存包
 - Then: 包被存到3号储物柜，并给出票据
 
 Task2:
 - Given: 2和3号柜空位最多
-- When: SmartLockerRobot 存包
+- When: SuperLockerRobot 存包
 - Then: 包被存到2号储物柜的，并给出票据
 
 Task3:
 - Given: 所有储物柜全都已满
-- When: SmartLockerRobot 存包
+- When: SuperLockerRobot 存包
 - Then: 提示所有储物柜都已满
 
 Task4: 
