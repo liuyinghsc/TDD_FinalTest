@@ -16,7 +16,6 @@ public class NormalManager {
         if (type.equals("S")){
             for (Locker locker:lockers) {
                 if (locker.hasRoom()){
-
                     return locker.save(bag);
                 }
             }
