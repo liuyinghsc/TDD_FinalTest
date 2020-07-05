@@ -166,7 +166,23 @@ public class LockerSystemFinalTest {
         assertEquals(pickupBag,lbag);
     }
 
+    @Test
+    public void should_save_bag_to_vipmlocker1_when_vip_user_save_m_bag_given_lockerRobotManager_manage_one_priRobot_with_two_locker() {
+        Locker vipsLocker = new Locker(5, "S");
+        Locker vipmLocker1 = new Locker(5, "M");
+        vipmLocker1.save(new Bag("M"));
+        Locker vipmLocker2 = new Locker(5, "M");
+        PrimaryLockerRobot priRobot = new PrimaryLockerRobot(vipmLocker1,vipmLocker2);
+        Locker lLocker = new Locker(5, "L");
+        SuperLockerRobot superRobot = new SuperLockerRobot(lLocker);
+        VipLockerRobotManager vipLockerRobotManager = new VipLockerRobotManager(List.of(vipsLocker), List.of(priRobot), List.of(superRobot));
 
+        Bag mbag = new Bag("M");
+        Ticket ticket = vipLockerRobotManager.save(mbag);
+
+        Bag pickupBag = vipmLocker1.pickUp(ticket);
+        assertEquals(pickupBag,mbag);
+    }
 
 
 
