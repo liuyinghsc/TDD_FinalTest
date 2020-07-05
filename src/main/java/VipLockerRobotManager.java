@@ -1,31 +1,31 @@
 import com.sun.tools.javac.util.List;
 
 public class VipLockerRobotManager {
-    private List<Locker> lockers;
-    private List<PrimaryLockerRobot> priRobots;
-    private List<SuperLockerRobot> superRobots;
+    private List<Locker> vipLockers;
+    private List<PrimaryLockerRobot> vipPriRobots;
+    private List<SuperLockerRobot> vipSuperRobots;
 
     public VipLockerRobotManager(List<Locker> lockers, List<PrimaryLockerRobot> priRobot, List<SuperLockerRobot> superRobot) {
-        this.lockers = lockers;
-        this.priRobots = priRobot;
-        this.superRobots = superRobot;
+        this.vipLockers = lockers;
+        this.vipPriRobots = priRobot;
+        this.vipSuperRobots = superRobot;
     }
 
     public Ticket save(Bag bag) {
         String type = bag.getType();
         if (type.equals("S")){
-            for (Locker locker:lockers) {
+            for (Locker locker: vipLockers) {
                 if (locker.hasRoom()){
                     return locker.save(bag);
                 }
             }
             throw new LockerHasNoRoomException("the Locker has no room");
         }else if (type.equals("M")){
-            for (PrimaryLockerRobot primaryLockerRobot:priRobots){
+            for (PrimaryLockerRobot primaryLockerRobot: vipPriRobots){
                 return primaryLockerRobot.save(bag);
             }
         }else if (type.equals("L")){
-            for (SuperLockerRobot superLockerRobot:superRobots){
+            for (SuperLockerRobot superLockerRobot: vipSuperRobots){
                 return superLockerRobot.save(bag);
             }
         }
@@ -33,15 +33,15 @@ public class VipLockerRobotManager {
     }
 
     public Bag pickup(Ticket ticket) {
-        for (Locker locker : this.lockers) {
+        for (Locker locker : this.vipLockers) {
             if (locker.isValid(ticket)) {
                 return locker.pickUp(ticket);
             }
         }
-        for (PrimaryLockerRobot primaryLockerRobot:priRobots){
+        for (PrimaryLockerRobot primaryLockerRobot: vipPriRobots){
             return primaryLockerRobot.pickUp(ticket);
         }
-        for (SuperLockerRobot superLockerRobot:superRobots){
+        for (SuperLockerRobot superLockerRobot: vipSuperRobots){
             return superLockerRobot.pickUp(ticket);
         }
         throw new InvalidTicketException();
