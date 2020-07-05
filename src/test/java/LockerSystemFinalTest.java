@@ -268,10 +268,9 @@ public class LockerSystemFinalTest {
         vipsLocker.save(new Bag("S"));
         Locker vipmLocker = new Locker(5, "M");
         PrimaryLockerRobot vipPriRobot = new PrimaryLockerRobot(vipmLocker);
-        Locker viplLocker = new Locker(5, "L");
-        SuperLockerRobot vipSuperRobot = new SuperLockerRobot(viplLocker);
+        Locker viplLocker1 = new Locker(5, "L");
+        SuperLockerRobot vipSuperRobot = new SuperLockerRobot(viplLocker1);
         VipLockerRobotManager vipLockerRobotManager = new VipLockerRobotManager(List.of(vipsLocker), List.of(vipPriRobot), List.of(vipSuperRobot));
-
 
         Bag sbag = new Bag("S");
         vipLockerRobotManager.save(sbag);
