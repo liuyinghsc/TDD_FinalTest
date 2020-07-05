@@ -1,18 +1,28 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 /**
  * @author lianghongbuaa@gmail.com
  * @date 2020/6/20
  */
 
-public class PrimaryLockerRobot extends Robot{
-
-
+public class PrimaryLockerRobot{
+    private  List<Locker> lockers;
 
     public PrimaryLockerRobot(Locker... lockers) {
-        super(Arrays.asList(lockers));
+        List<Locker> lockers1 = Arrays.asList(lockers);
+        ArrayList<Locker> resLockers = new ArrayList<>();
+        for (int i = 0; i < lockers1.size(); i++) {
+            Locker locker = lockers1.get(i);
+            if (locker.getType().equals("M")){
+                resLockers.add(locker);
+            }else {
+                throw new LockerIsNotMatchException("The Locker is not match the robot");
+            }
+        }
+        this.lockers.addAll(resLockers);
     }
 
     public Ticket save(Bag bag) {

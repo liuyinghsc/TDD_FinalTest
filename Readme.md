@@ -291,6 +291,16 @@ VIP:
 
 ### Tasking
 
+Task30:
+- Given: 超市管理员配置Robot和Manager
+- When: Locker型号不匹配
+- Then: Robot和Manager将无法正常使用
+
+
+Task31:
+- Given: 超市管理员配置Robot和Manager
+- When: Locker型号匹配
+- Then: Robot和Manager正常使用
 
 Task1:
 - Given: 
@@ -521,13 +531,3 @@ Task29:
 - Then: 取包失败，返回票的型号对不上
 
 
-Task30:
-- Given: 超市管理员配置Robot和Manager
-- When: Locker型号不匹配
-- Then: Robot和Manager将无法正常使用
-
-
-Task30:
-- Given: 超市管理员配置Robot和Manager
-- When: Locker型号匹配
-- Then: Robot和Manager正常使用

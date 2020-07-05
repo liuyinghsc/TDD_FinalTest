@@ -9,9 +9,9 @@ public class LockerRobotDirector {
         managers.addAll(lockerRobotManager);
     }
 
-    public String viewReport() {
-        return managers.stream()
-                .map(LockerRobotManager::getReport)
-                .collect(Collectors.joining("\n"));
-    }
+//    public String viewReport() {
+//        return managers.stream()
+//                .map(LockerRobotManager::getReport)
+//                .collect(Collectors.joining("\n"));
+//    }
 }

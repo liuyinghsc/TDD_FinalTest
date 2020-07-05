@@ -3,12 +3,18 @@ import java.util.Map;
 
 public class Locker implements Reportable{
     private final Map<Ticket, Bag> ticketBagMap;
+    private final String type;
 
     private int totalCapacity;
 
-    public Locker(int size) {
+    public Locker(int size,String type) {
         this.totalCapacity = size;
+        this.type =type;
         ticketBagMap = new HashMap<>();
+    }
+
+    public String getType() {
+        return type;
     }
 
     public Ticket save(Bag bag) {
