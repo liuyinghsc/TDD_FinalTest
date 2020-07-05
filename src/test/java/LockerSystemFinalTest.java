@@ -32,6 +32,7 @@ public class LockerSystemFinalTest {
         assertNotNull(superLockerRobot);
     }
 
+
     @Test
     public void should_save_bag_to_slocker_when_normal_user_save_s_bag_given_supermaket_manage_one_locker_one_priRobot_and_one_superBobot() {
 
