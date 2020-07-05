@@ -361,5 +361,27 @@ public class LockerSystemFinalTest {
         assertEquals(mBag,pickupBag);
     }
 
+    @Test(expected = InvalidTicketException.class)
+    public void should_failed_pickup_bag_when_normal_user_pickup_bag_given_invalid_ticket_normalManager_manage_one_locker_and_one_priRobot_and_one_superRobot() {
+        Locker vipsLocker = new Locker(5, "S");
+        Locker vipmLocker1 = new Locker(5, "M");
+        PrimaryLockerRobot priRobot = new PrimaryLockerRobot(vipmLocker1);
+        Locker viplLocker1 = new Locker(5, "L");
+        SuperLockerRobot superRobot = new SuperLockerRobot(viplLocker1);
+        VipLockerRobotManager vipLockerRobotManager = new VipLockerRobotManager(List.of(vipsLocker), List.of(priRobot), List.of(superRobot));
+
+        Locker sLocker = new Locker(5, "S");
+        Locker mLocker1 = new Locker(5, "M");
+        PrimaryLockerRobot vippriRobot = new PrimaryLockerRobot(mLocker1);
+        Locker lLocker = new Locker(5, "L");
+        SuperLockerRobot vipsuperRobot = new SuperLockerRobot(lLocker);
+        NormalManager normalManager = new NormalManager(List.of(sLocker), List.of(vippriRobot), List.of(vipsuperRobot));
+
+        Bag mBag = new Bag("M");
+        Ticket ticket = vipLockerRobotManager.save(mBag);
+
+        normalManager.pickup(ticket);
+    }
+
 
 }
