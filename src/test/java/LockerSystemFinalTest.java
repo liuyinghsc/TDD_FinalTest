@@ -134,7 +134,37 @@ public class LockerSystemFinalTest {
         assertEquals(pickupBag,sbag);
     }
 
+    @Test
+    public void should_save_bag_to_vipmlocker_when_vip_user_save_m_bag_given_lockerRobotManager_manage_one_locker_and_one_superRobot_and_one_priRobot() {
+        Locker vipsLocker = new Locker(5, "S");
+        Locker vipmLocker = new Locker(5, "M");
+        PrimaryLockerRobot priRobot = new PrimaryLockerRobot(vipmLocker);
+        Locker viplLocker = new Locker(5, "L");
+        SuperLockerRobot superRobot = new SuperLockerRobot(viplLocker);
+        VipLockerRobotManager vipLockerRobotManager = new VipLockerRobotManager(List.of(vipsLocker), List.of(priRobot), List.of(superRobot));
 
+        Bag mbag = new Bag("M");
+        Ticket ticket = vipLockerRobotManager.save(mbag);
+
+        Bag pickupBag = vipmLocker.pickUp(ticket);
+        assertEquals(pickupBag,mbag);
+    }
+
+    @Test
+    public void should_save_bag_to_vipllocker_when_vip_user_save_l_bag_given_lockerRobotManager_manage_one_locker_and_one_superRobot_and_one_priRobot() {
+        Locker vipsLocker = new Locker(5, "S");
+        Locker vipmLocker = new Locker(5, "M");
+        PrimaryLockerRobot priRobot = new PrimaryLockerRobot(vipmLocker);
+        Locker viplLocker = new Locker(5, "L");
+        SuperLockerRobot superRobot = new SuperLockerRobot(viplLocker);
+        VipLockerRobotManager vipLockerRobotManager = new VipLockerRobotManager(List.of(vipsLocker), List.of(priRobot), List.of(superRobot));
+
+        Bag lbag = new Bag("L");
+        Ticket ticket = vipLockerRobotManager.save(lbag);
+
+        Bag pickupBag = viplLocker.pickUp(ticket);
+        assertEquals(pickupBag,lbag);
+    }
 
 
 
