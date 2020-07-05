@@ -294,6 +294,22 @@ public class LockerSystemFinalTest {
         vipLockerRobotManager.save(mbag);
     }
 
+    @Test(expected = LockerHasNoRoomException.class)
+    public void should_save_failed_when_vip_user_save_l_bag_given_VipManager_has_no_room() {
+        Locker vipsLocker = new Locker(5, "S");
+        Locker vipmLocker = new Locker(5, "M");
+        PrimaryLockerRobot vipPriRobot = new PrimaryLockerRobot(vipmLocker);
+        Locker viplLocker1 = new Locker(5, "L");
+        viplLocker1.save(new Bag("L"));
+        viplLocker1.save(new Bag("L"));
+        viplLocker1.save(new Bag("L"));
+        viplLocker1.save(new Bag("L"));
+        viplLocker1.save(new Bag("L"));
+        SuperLockerRobot vipSuperRobot = new SuperLockerRobot(viplLocker1);
+        VipLockerRobotManager vipLockerRobotManager = new VipLockerRobotManager(List.of(vipsLocker), List.of(vipPriRobot), List.of(vipSuperRobot));
 
+        Bag lbag = new Bag("L");
+        vipLockerRobotManager.save(lbag);
+    }
 
 }
